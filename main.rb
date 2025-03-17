@@ -24,12 +24,8 @@ begin
     library = Library.new
 
     puts "\n# Creating Books..."
-    book1 = Book.new("The Ruby Way", "Hal Fulton")
-    book2 = Book.new("Eloquent Ruby", "Russ Olsen")
-
-    puts "\n# Adding Books to Library..."
-    library.add_book(book1)
-    library.add_book(book2)
+    library.create_book("The Ruby Way", "Hal Fulton")
+    library.create_book("Eloquent Ruby", "Russ Olsen")
 
     puts "\n# Listing Available Books..."
     library.list_books
