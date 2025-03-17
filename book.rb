@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# checks needed for book
 
 class Book
     attr_accessor :title, :author, :status

@@ -18,6 +18,7 @@ require_relative 'book'
 #  - "check_out(title)": Finds a book by title and checks it out.
 #  - "return_book(title)": Finds a book by title and returns it.
 #  - "find_book(title)": Private method that searches for a book.
+# - "creat_book(title, author): A method as a shortcut for add_book"
 
 begin
     puts "\n# Creating a Library..."
