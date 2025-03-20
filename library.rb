@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-# Libary for books
-
 
 require_relative 'book'
 
@@ -23,7 +21,7 @@ class Library
   def list_books
     available_books = books.select(&:available?)
     if available_books.empty?
-      puts "No books available"
+      puts 'No books available'
     else
       available_books.each { |book| puts book }
     end
@@ -41,7 +39,7 @@ class Library
 
   def find_book(title)
     book = books.find { |b| b.title == title }
-    raise "Book not found" unless book
+    raise 'Book not found' unless book
     book
   end
 end
