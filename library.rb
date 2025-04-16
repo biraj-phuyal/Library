@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'book'
-
+require_relative 'messages'
+# This is the class for libary
 class Library
   attr_accessor :books
 
@@ -11,17 +12,17 @@ class Library
 
   def add_book(book)
     books << book
-    puts "Added: #{book}"
+    puts Messages::Libary.added_book(book)
   end
 
   def create_book(title, author)
     add_book(Book.new(title, author))
   end
-  
+
   def list_books
     available_books = books.select(&:available?)
     if available_books.empty?
-      puts 'No books available'
+      puts Messages::Libary::NO_BOOK_AVAILABLE
     else
       available_books.each { |book| puts book }
     end
@@ -39,7 +40,8 @@ class Library
 
   def find_book(title)
     book = books.find { |b| b.title == title }
-    raise 'Book not found' unless book
+    raise Messages::Libary::BOOK_NOT_FOUND unless book
+
     book
   end
 end

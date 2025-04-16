@@ -1,35 +1,38 @@
-# Book class represents a book in the system.
-# It holds information about the book's title, author, and publication date.
-# You can create, update, and retrieve book details using this class.
-
 # frozen_string_literal: true
 
+require_relative 'messages'
+
+# This is the Book class
 class Book
   attr_accessor :title, :author, :status
+
+  CHECKED_OUT = 'checked_out'
+  AVAILABLE = 'available'
+  DEFAULT_STATE = AVAILABLE
 
   def initialize(title, author)
     @title = title
     @author = author
-    @status = 'available'
+    @status = DEFAULT_STATE
   end
 
   def available?
-    @status == 'available'
+    status == AVAILABLE
   end
 
   def check_out
-    raise 'Book already checked out' unless available?
+    raise Messages::Book::ALREADY_CHECKED_OUT unless available?
 
-    @status = 'checked_out'
+    @status = CHECKED_OUT
   end
 
   def return_book
-    raise 'Book is already available' if available?
+    raise Messages::Book::ALREADY_AVAILABLE if available?
 
-    @status = 'available'
+    @status = AVAILABLE
   end
 
   def to_s
-    "#{title} by #{author} (#{status})"
+    Messages::Book.display_book(self)
   end
 end
